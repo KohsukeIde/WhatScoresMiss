@@ -1,0 +1,5 @@
+dataset: ScanNet
+dataset_root_env: SCANNET_ROOT
+checkpoint_env: CONCERTO_CKPT
+conditions: [clean, global_swap, cross_image_swap, cross_scene_swap]
+output_ledger: results/ledgers/concerto_loss_runs.csv

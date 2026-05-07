@@ -1,0 +1,4 @@
+experiment_id,model,dataset,split,condition,checkpoint_source,seed,metric,value,source_script,config,notes
+pointgpt_pretext_mask_off_order_causal,PointGPT-S,ShapeNet55,pretrain,mask_off_order_causal,relaxed_variant_checkpoint,0,pretext_loss_drop_percent,90.66,reproduce/pointgpt/scripts/train_relaxed_variant.sh,configs/pointgpt/mask_order_relaxations.yaml,paper-reported pretext endpoint
+pointgpt_pretext_mask_off_order_randomized,PointGPT-S,ShapeNet55,pretrain,mask_off_order_randomized,relaxed_variant_checkpoint,0,pretext_loss_drop_percent,89.02,reproduce/pointgpt/scripts/train_relaxed_variant.sh,configs/pointgpt/mask_order_relaxations.yaml,paper-reported pretext endpoint
+pointgpt_pretext_mask_on_order_randomized,PointGPT-S,ShapeNet55,pretrain,mask_on_order_randomized,relaxed_variant_checkpoint,0,pretext_loss_drop_percent,88.72,reproduce/pointgpt/scripts/train_relaxed_variant.sh,configs/pointgpt/mask_order_relaxations.yaml,paper-reported pretext endpoint

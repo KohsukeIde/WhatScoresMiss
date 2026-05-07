@@ -1,0 +1,10 @@
+diff --git a/models/pointgpt_pretrain.py b/models/pointgpt_pretrain.py
+--- a/models/pointgpt_pretrain.py
++++ b/models/pointgpt_pretrain.py
+@@
+-ordered_groups = causal_order(groups, centers)
++if cfg.relaxation.randomize_order:
++    perm = torch.randperm(groups.shape[1], device=groups.device)
++    ordered_groups = groups[:, perm]
++else:
++    ordered_groups = causal_order(groups, centers)

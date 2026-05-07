@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-: "${CONCERTO_CKPT:?Set CONCERTO_CKPT. See docs/CHECKPOINTS.md.}"
-: "${SCANNET_ROOT:?Set SCANNET_ROOT. See docs/DATA.md.}"
-: "${OUTPUT_ROOT:?Set OUTPUT_ROOT.}"
+python -m reproduce.concerto.representation_companion \
+  --ledger results/ledgers/concerto_representation_companion_runs.csv \
+  --output results/generated_tables/concerto_representation_companion_from_ledger.csv
 
-echo "Representation companion runs require the external scene backbone and ScanNet linear-proxy code."
-echo "Use configs/concerto/representation_companion.yaml."
-echo "Expected output directory: ${OUTPUT_ROOT}"
+bash scripts/_full_run_notice.sh representation-companion \
+  CONCERTO_CODE_ROOT CONCERTO_CKPT SCANNET_ROOT OUTPUT_ROOT

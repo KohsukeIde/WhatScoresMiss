@@ -14,6 +14,11 @@ diagnostic entry points for users who already have the official datasets,
 checkpoints, and any required external model code. They should not be read as
 the exact internal cluster scripts used for the submitted runs.
 
+`results/ledgers/` contains sanitized row-level ledgers. They include
+experiment identifiers, models, datasets, conditions, metrics, source scripts,
+configs, and anonymized checkpoint/source notes where available. They are not
+raw logs, but they provide more provenance than the compact summary CSVs.
+
 `results/generated_tables/` and `results/generated_figures/` are produced by:
 
 ```bash

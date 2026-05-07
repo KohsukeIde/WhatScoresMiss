@@ -1,0 +1,9 @@
+diff --git a/models/pointgpt_pretrain.py b/models/pointgpt_pretrain.py
+--- a/models/pointgpt_pretrain.py
++++ b/models/pointgpt_pretrain.py
+@@
+-visible_tokens, masked_tokens = apply_mask(tokens, mask_ratio=cfg.mask_ratio)
++if cfg.relaxation.disable_mask:
++    visible_tokens, masked_tokens = tokens, tokens.new_empty(tokens.shape[0], 0, tokens.shape[-1])
++else:
++    visible_tokens, masked_tokens = apply_mask(tokens, mask_ratio=cfg.mask_ratio)

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-: "${SCANNET_ROOT:?Set SCANNET_ROOT. See docs/DATA.md.}"
-: "${OUTPUT_ROOT:?Set OUTPUT_ROOT.}"
+python -m reproduce.reported_score.oracle_from_logits \
+  --ledger results/ledgers/scannet_oracle_eval_runs.csv \
+  --output results/generated_tables/oracle_from_ledger.csv
 
-echo "Oracle@k diagnostics can run from cached logits or external scene inference code."
-echo "Use configs/reported_score/oracle_scannet.yaml."
-echo "Expected output directory: ${OUTPUT_ROOT}"
+bash scripts/_full_run_notice.sh oracle \
+  SCENE_CODE_ROOT SCANNET_ROOT OUTPUT_ROOT CONCERTO_CKPT SONATA_CKPT UTONIA_CKPT PTV3_CKPT

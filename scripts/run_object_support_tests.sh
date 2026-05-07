@@ -1,17 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-: "${SCANOBJECTNN_ROOT:?Set SCANOBJECTNN_ROOT. See docs/DATA.md.}"
-: "${SHAPENETPART_ROOT:?Set SHAPENETPART_ROOT. See docs/DATA.md.}"
-: "${OUTPUT_ROOT:?Set OUTPUT_ROOT.}"
+python -m reproduce.support.aggregate_support_results \
+  --scene-ledger results/ledgers/scannet_support_eval_runs.csv \
+  --object-ledger results/ledgers/shapenetpart_support_eval_runs.csv \
+  --output results/generated_tables/support_from_ledgers.csv
 
-for var in POINTGPT_CKPT POINTMAE_CKPT PCPMAE_CKPT; do
-  if [[ -z "${!var:-}" ]]; then
-    echo "Missing ${var}. See docs/CHECKPOINTS.md." >&2
-    exit 2
-  fi
-done
-
-echo "Object support tests require external PointGPT/Point-MAE/PCP-MAE model code."
-echo "Use configs/object_support/scanobjectnn_support.yaml and configs/object_support/shapenetpart_support.yaml."
-echo "Expected output directory: ${OUTPUT_ROOT}"
+bash scripts/_full_run_notice.sh object-support \
+  POINTGPT_CODE_ROOT POINTMAE_CODE_ROOT PCPMAE_CODE_ROOT SCANOBJECTNN_ROOT SHAPENETPART_ROOT OUTPUT_ROOT POINTGPT_CKPT POINTMAE_CKPT PCPMAE_CKPT

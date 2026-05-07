@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-: "${POINTGPT_CKPT:?Set POINTGPT_CKPT or provide relaxed variant checkpoints. See docs/CHECKPOINTS.md.}"
-: "${SCANOBJECTNN_ROOT:?Set SCANOBJECTNN_ROOT. See docs/DATA.md.}"
-: "${SHAPENETPART_ROOT:?Set SHAPENETPART_ROOT. See docs/DATA.md.}"
-: "${OUTPUT_ROOT:?Set OUTPUT_ROOT.}"
+python -m reproduce.pointgpt.aggregate_pointgpt_results \
+  --pretext-ledger results/ledgers/pointgpt_pretext_logs.csv \
+  --downstream-ledger results/ledgers/pointgpt_downstream_eval_runs.csv \
+  --output results/generated_tables/pointgpt_mask_order_from_ledgers.csv
 
-echo "PointGPT mask/order relaxations require the external PointGPT training/evaluation code."
-echo "Use configs/pointgpt/mask_order_relaxations.yaml."
-echo "Expected output directory: ${OUTPUT_ROOT}"
+bash scripts/_full_run_notice.sh pointgpt-mask-order \
+  POINTGPT_CODE_ROOT SCANOBJECTNN_ROOT SHAPENETPART_ROOT OUTPUT_ROOT

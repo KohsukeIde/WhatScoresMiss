@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-: "${CONCERTO_CKPT:?Set CONCERTO_CKPT. See docs/CHECKPOINTS.md.}"
-: "${OUTPUT_ROOT:?Set OUTPUT_ROOT.}"
+args=(
+  --config reproduce/concerto/configs/scannet_target_swap.yaml
+  --loss-ledger results/ledgers/concerto_loss_runs.csv
+  --output results/generated_tables/concerto_target_swap_from_ledger.csv
+)
 
-for var in ARKITSCENES_ROOT SCANNET_ROOT SCANNETPP_ROOT S3DIS_ROOT HM3D_ROOT STRUCTURED3D_ROOT; do
-  if [[ -z "${!var:-}" ]]; then
-    echo "Missing ${var}. See docs/DATA.md." >&2
-    exit 2
-  fi
-done
+if [[ -n "${CONCERTO_CODE_ROOT:-}" ]]; then
+  args+=(--external-code-root "$CONCERTO_CODE_ROOT")
+fi
 
-echo "Concerto target-swap diagnostics require the external Concerto-compatible evaluation code."
-echo "Use configs/concerto/target_swap.yaml with the dataset roots and CONCERTO_CKPT above."
-echo "Expected output directory: ${OUTPUT_ROOT}"
+python -m reproduce.concerto.target_swap "${args[@]}"
+
+bash scripts/_full_run_notice.sh target-swap \
+  CONCERTO_CODE_ROOT CONCERTO_CKPT OUTPUT_ROOT ARKITSCENES_ROOT SCANNET_ROOT SCANNETPP_ROOT S3DIS_ROOT HM3D_ROOT STRUCTURED3D_ROOT

@@ -8,8 +8,9 @@ The repository provides:
 
 1. CPU smoke tests for diagnostic operators.
 2. Figure and table reproduction from small CSV files.
-3. Entry-point wrappers and configs for full diagnostics when official
-   datasets, checkpoints, and external model implementations are available.
+3. Diagnostic reproduction entry points, sanitized patches, configs, and run
+   ledgers for the empirical analyses when official datasets, checkpoints, and
+   external model implementations are available.
 
 ## Reproducibility Levels
 
@@ -37,9 +38,14 @@ pytest -q
 bash scripts/smoke_test.sh
 ```
 
+These synthetic tests validate the diagnostic operators. They do not reproduce
+the empirical paper results by themselves.
+
 ### Level 2: Full-diagnostic entry points and configuration wrappers
 
-This level requires official datasets, checkpoints, and suitable GPU hardware.
+This level provides real diagnostic entry points and configuration wrappers. It
+requires official datasets, checkpoints, suitable GPU hardware, and the
+corresponding external model codebases.
 Set the required local paths first:
 
 ```bash
@@ -84,6 +90,9 @@ corresponding external model codebases. Use the configs listed in
 - `tests/`: synthetic unit tests for the operators.
 - `configs/`: documented diagnostic configuration stubs.
 - `scripts/`: Level 0/1 reproduction scripts and Level 2 wrappers.
+- `reproduce/`: diagnostic entry points, sanitized patches, configs, and
+  aggregation scripts for the empirical analyses.
+- `results/ledgers/`: sanitized run ledgers used by the Level 2 aggregators.
 - `results/paper_reported_results/`: compact CSVs used only for table and
   figure reproduction.
 - `docs/`: dataset, checkpoint, compute, reproducibility, and third-party notes.
@@ -94,4 +103,6 @@ The CSV files under `results/paper_reported_results/` are paper-reported
 summaries for Level 0 reproduction. They are not raw model outputs and should
 not be interpreted as redistributed datasets or checkpoints. Full reproduction
 requires the official datasets and checkpoints listed in `docs/DATA.md` and
-`docs/CHECKPOINTS.md`.
+`docs/CHECKPOINTS.md`. The paper-reported CSVs are summaries; the ledgers under
+`results/ledgers/` and the scripts under `reproduce/` document how those values
+are obtained or recomputed from external model outputs.

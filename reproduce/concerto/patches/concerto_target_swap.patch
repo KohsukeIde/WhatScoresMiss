@@ -1,0 +1,27 @@
+diff --git a/tools/target_swap_eval.py b/tools/target_swap_eval.py
+new file mode 100644
+--- /dev/null
++++ b/tools/target_swap_eval.py
+@@
++"""Sanitized patch excerpt for the target-swap diagnostic.
++
++Apply inside an external Concerto-compatible evaluation tree. The diagnostic
++keeps the query point features fixed and replaces the pretext target with a
++target sampled from the configured scope: global, cross-image, or cross-scene.
++"""
++
++def build_swapped_target(batch, target_cache, scope, rng):
++    if scope == "global":
++        return target_cache.sample_global(rng)
++    if scope == "cross_image":
++        return target_cache.sample_other_image(batch.scene_id, batch.image_id, rng)
++    if scope == "cross_scene":
++        return target_cache.sample_other_scene(batch.scene_id, rng)
++    raise ValueError(f"unknown swap scope: {scope}")
++
++def evaluate_target_swap(model, loader, target_cache, criterion, scope):
++    for batch in loader:
++        pred = model(batch.points, batch.images)
++        target = build_swapped_target(batch, target_cache, scope, rng=batch.rng)
++        loss = criterion(pred, target)
++        yield {"scene_id": batch.scene_id, "condition": scope, "loss": float(loss)}

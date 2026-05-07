@@ -1,0 +1,5 @@
+variant: no_mask_random_order
+mask: false
+order: randomized
+external_code_env: POINTGPT_CODE_ROOT
+pretrain_checkpoint_env: POINTGPT_CKPT

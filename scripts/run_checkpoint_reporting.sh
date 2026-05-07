@@ -1,16 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-: "${SCANOBJECTNN_ROOT:?Set SCANOBJECTNN_ROOT. See docs/DATA.md.}"
-: "${OUTPUT_ROOT:?Set OUTPUT_ROOT.}"
+python -m reproduce.reported_score.checkpoint_reporting \
+  --ledger results/ledgers/scanobjectnn_checkpoint_selection_runs.csv \
+  --output results/generated_tables/checkpoint_reporting_from_ledger.csv
 
-for var in POINTGPT_CKPT POINTMAE_CKPT PCPMAE_CKPT; do
-  if [[ -z "${!var:-}" ]]; then
-    echo "Missing ${var}. See docs/CHECKPOINTS.md." >&2
-    exit 2
-  fi
-done
-
-echo "Checkpoint reporting requires external fine-tuning logs/checkpoints."
-echo "Use configs/reported_score/checkpoint_reporting.yaml."
-echo "Expected output directory: ${OUTPUT_ROOT}"
+bash scripts/_full_run_notice.sh checkpoint-reporting \
+  SCANOBJECTNN_ROOT OUTPUT_ROOT POINTGPT_CODE_ROOT POINTMAE_CODE_ROOT PCPMAE_CODE_ROOT
