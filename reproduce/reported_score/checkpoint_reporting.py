@@ -1,4 +1,4 @@
-"""Aggregate checkpoint selection protocol ledgers."""
+"""Aggregate checkpoint selection protocol provenance summaries."""
 
 from __future__ import annotations
 

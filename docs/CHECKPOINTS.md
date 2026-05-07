@@ -40,5 +40,10 @@ with `reproduce/pointgpt/configs/*.yaml` and the patches under
 `reproduce/pointgpt/patches/`, or loaded by setting `POINTGPT_CKPT` to a
 user-provided checkpoint.
 
+Patch files in this repository are sanitized excerpts. They identify the
+relevant changes used by the diagnostics, but they are not complete vendored
+replacements for the external repositories. Full execution requires applying or
+adapting the corresponding changes inside the listed official codebases.
+
 The wrapper scripts do not download checkpoints automatically. They check for
 the required variables and print a clear message when a checkpoint is missing.

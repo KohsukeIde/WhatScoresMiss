@@ -1,4 +1,4 @@
-"""Aggregate Concerto representation companion rows from the sanitized ledger."""
+"""Aggregate Concerto representation companion rows from a sanitized provenance summary."""
 
 from __future__ import annotations
 

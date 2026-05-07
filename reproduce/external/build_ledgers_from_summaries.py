@@ -1,8 +1,9 @@
-"""Create sanitized run ledgers from compact paper-summary CSVs.
+"""Create sanitized provenance summaries from compact paper-summary CSVs.
 
-The generated ledgers are not raw model outputs; they preserve row-level
-provenance, configs, metrics, and source scripts for review without committing
-raw datasets, large checkpoints, or cluster logs.
+The generated CSVs are not raw model outputs, raw run logs, or checkpoint
+artifacts. They preserve row-level provenance, configs, metrics, and source
+scripts for review without committing raw datasets, large checkpoints, cluster
+logs, or personal paths.
 """
 
 from __future__ import annotations
@@ -69,7 +70,7 @@ def concerto_loss_runs() -> None:
                     "value": float(r["clean_loss"]) + float(delta),
                     "source_script": "reproduce/concerto/target_swap.py",
                     "config": config,
-                    "notes": "paper-reported loss ledger; swap losses reconstructed from clean loss plus reported delta",
+                    "notes": "paper-reported loss provenance summary; swap losses reconstructed from clean loss plus reported delta",
                 }
             )
     write_ledger("concerto_loss_runs.csv", rows)
@@ -98,7 +99,7 @@ def concerto_closure_runs() -> None:
                     "value": val,
                     "source_script": "reproduce/concerto/coordinate_only_closure.py",
                     "config": "configs/concerto/coordinate_closure.yaml",
-                    "notes": "coordinate-only closure ledger reconstructed from paper-reported closure percentage",
+                    "notes": "coordinate-only closure provenance summary reconstructed from paper-reported closure percentage",
                 }
             )
     write_ledger("concerto_closure_fit_runs.csv", rows)
@@ -310,7 +311,7 @@ def main() -> None:
     pointgpt_runs()
     support_runs()
     reported_score_runs()
-    print(f"Wrote ledgers to {LEDGERS}")
+    print(f"Wrote provenance summaries to {LEDGERS}")
 
 
 if __name__ == "__main__":

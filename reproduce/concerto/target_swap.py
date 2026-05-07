@@ -2,8 +2,8 @@
 
 The full target extraction/inference loop depends on an external
 Concerto-compatible codebase. This script implements the paper diagnostic
-aggregation from a loss ledger and prints the exact external command when the
-model code is available.
+aggregation from a loss provenance summary and prints the exact external
+command when the model code is available.
 """
 
 from __future__ import annotations
@@ -55,7 +55,7 @@ def main() -> None:
             f"--config {args.config} --output-root $OUTPUT_ROOT"
         )
     else:
-        print("External Concerto code not bundled; aggregation ran from the sanitized ledger.")
+        print("External Concerto code not bundled; aggregation ran from the sanitized provenance summary.")
 
 
 if __name__ == "__main__":

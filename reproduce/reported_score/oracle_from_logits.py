@@ -1,4 +1,4 @@
-"""Compute Oracle@k metrics from logits, or aggregate sanitized oracle ledgers."""
+"""Compute Oracle@k metrics from logits, or aggregate sanitized oracle provenance summaries."""
 
 from __future__ import annotations
 

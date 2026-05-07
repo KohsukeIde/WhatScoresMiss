@@ -1,4 +1,4 @@
-"""Aggregate PointGPT mask/order relaxation ledgers."""
+"""Aggregate PointGPT mask/order relaxation provenance summaries."""
 
 from __future__ import annotations
 

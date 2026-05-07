@@ -1,4 +1,4 @@
-"""Build reported-score diagnostic outputs from sanitized ledgers."""
+"""Build reported-score diagnostic outputs from sanitized provenance summaries."""
 
 from __future__ import annotations
 

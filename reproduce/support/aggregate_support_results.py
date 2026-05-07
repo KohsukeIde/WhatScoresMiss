@@ -1,4 +1,4 @@
-"""Aggregate scene/object support ledgers."""
+"""Aggregate scene/object support provenance summaries."""
 
 from __future__ import annotations
 

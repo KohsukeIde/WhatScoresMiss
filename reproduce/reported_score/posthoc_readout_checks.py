@@ -1,4 +1,4 @@
-"""Aggregate post-hoc readout diagnostic ledgers."""
+"""Aggregate post-hoc readout diagnostic provenance summaries."""
 
 from __future__ import annotations
 

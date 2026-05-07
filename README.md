@@ -8,9 +8,9 @@ The repository provides:
 
 1. CPU smoke tests for diagnostic operators.
 2. Figure and table reproduction from small CSV files.
-3. Diagnostic reproduction entry points, sanitized patches, configs, and run
-   ledgers for the empirical analyses when official datasets, checkpoints, and
-   external model implementations are available.
+3. Diagnostic reproduction entry points, sanitized patch excerpts, configs, and
+   provenance summaries for the empirical analyses when official datasets,
+   checkpoints, and external model implementations are available.
 
 ## Reproducibility Levels
 
@@ -81,8 +81,10 @@ not pretend to run heavy experiments when datasets or checkpoints are absent.
 These scripts do not bundle the full external model implementations. They
 validate required dataset/checkpoint paths and document the diagnostic entry
 points. Full execution requires official datasets, checkpoints, and the
-corresponding external model codebases. Use the configs listed in
-`docs/REPRODUCIBILITY.md`.
+corresponding external model codebases. The patch files in `reproduce/` are
+sanitized excerpts that identify the relevant code changes; they are not
+complete vendored replacements for the external repositories. Use the configs
+listed in `docs/REPRODUCIBILITY.md`.
 
 ## Repository Map
 
@@ -90,9 +92,10 @@ corresponding external model codebases. Use the configs listed in
 - `tests/`: synthetic unit tests for the operators.
 - `configs/`: documented diagnostic configuration stubs.
 - `scripts/`: Level 0/1 reproduction scripts and Level 2 wrappers.
-- `reproduce/`: diagnostic entry points, sanitized patches, configs, and
+- `reproduce/`: diagnostic entry points, sanitized patch excerpts, configs, and
   aggregation scripts for the empirical analyses.
-- `results/ledgers/`: sanitized run ledgers used by the Level 2 aggregators.
+- `results/ledgers/`: sanitized row-level provenance summaries used by the
+  Level 2 aggregators.
 - `results/paper_reported_results/`: compact CSVs used only for table and
   figure reproduction.
 - `docs/`: dataset, checkpoint, compute, reproducibility, and third-party notes.
@@ -103,6 +106,7 @@ The CSV files under `results/paper_reported_results/` are paper-reported
 summaries for Level 0 reproduction. They are not raw model outputs and should
 not be interpreted as redistributed datasets or checkpoints. Full reproduction
 requires the official datasets and checkpoints listed in `docs/DATA.md` and
-`docs/CHECKPOINTS.md`. The paper-reported CSVs are summaries; the ledgers under
-`results/ledgers/` and the scripts under `reproduce/` document how those values
-are obtained or recomputed from external model outputs.
+`docs/CHECKPOINTS.md`. The paper-reported CSVs are compact summaries; the files
+under `results/ledgers/` are sanitized provenance summaries derived from the
+paper-reported experimental records. They are not raw model outputs, raw cluster
+logs, or checkpoint artifacts.

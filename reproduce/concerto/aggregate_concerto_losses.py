@@ -1,4 +1,4 @@
-"""Build Concerto diagnostic summary tables from sanitized ledgers."""
+"""Build Concerto diagnostic summary tables from sanitized provenance summaries."""
 
 from __future__ import annotations
 

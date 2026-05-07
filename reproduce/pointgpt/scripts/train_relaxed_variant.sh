@@ -6,7 +6,7 @@ python reproduce/pointgpt/aggregate_pointgpt_results.py >/dev/null
 
 if [[ -z "${POINTGPT_CODE_ROOT:-}" ]]; then
   echo "POINTGPT_CODE_ROOT is not set; external PointGPT training is not launched." >&2
-  echo "Diagnostic aggregation from sanitized ledgers succeeded." >&2
+  echo "Diagnostic aggregation from sanitized provenance summaries succeeded." >&2
   exit 0
 fi
 
