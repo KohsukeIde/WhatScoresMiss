@@ -1,0 +1,20 @@
+experiment: pointgpt_support_tests
+description: Object support tests with checkpoint and readout fixed.
+conditions:
+  - clean
+  - random_keep80
+  - random_keep50
+  - random_keep20
+  - random_keep10
+  - structured_keep80
+  - structured_keep50
+  - structured_keep20
+  - structured_keep10
+  - part_keep80_per_part
+  - part_keep50_per_part
+  - part_keep20_per_part
+  - part_keep10_per_part
+  - xyz_zero
+metric_scope:
+  segmentation: unique_retained_original_points
+  duplicate_logits: mean_by_original_index

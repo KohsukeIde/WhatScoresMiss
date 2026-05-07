@@ -1,0 +1,21 @@
+experiment: pointgpt_mask_order_relaxations
+description: Matched PointGPT-S mask/order pretraining relaxations and downstream transfer.
+requires:
+  datasets:
+    - SCANOBJECTNN_ROOT
+    - SHAPENETPART_ROOT
+  checkpoints:
+    - POINTGPT_CKPT
+variants:
+  - mask: on
+    order: causal
+  - mask: off
+    order: causal
+  - mask: off
+    order: randomized
+  - mask: on
+    order: randomized
+metrics:
+  - pretext_loss_drop_percent
+  - top1_accuracy
+  - instance_mIoU

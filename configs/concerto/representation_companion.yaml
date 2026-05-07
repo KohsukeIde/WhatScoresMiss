@@ -1,0 +1,15 @@
+experiment: concerto_representation_companion
+description: ScanNet linear proxy for continuation variants.
+requires:
+  datasets:
+    - SCANNET_ROOT
+  checkpoints:
+    - CONCERTO_CKPT
+variants:
+  - cross_modal
+  - coordinate_mlp
+  - no_image_encoder
+metrics:
+  - mIoU
+  - mAcc
+  - allAcc

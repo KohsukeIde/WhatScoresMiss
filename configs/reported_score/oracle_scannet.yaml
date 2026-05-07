@@ -1,0 +1,15 @@
+experiment: oracle_scannet
+description: Oracle@k candidate-set diagnostics for scene segmentation logits.
+requires:
+  datasets:
+    - SCANNET_ROOT
+  checkpoints:
+    - CONCERTO_CKPT
+    - SONATA_CKPT
+    - UTONIA_CKPT
+topk:
+  - 2
+  - 5
+metrics:
+  - mIoU
+  - class_iou

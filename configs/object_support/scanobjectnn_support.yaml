@@ -1,0 +1,24 @@
+experiment: scanobjectnn_object_support
+description: Object classification support perturbations.
+requires:
+  datasets:
+    - SCANOBJECTNN_ROOT
+  checkpoints:
+    - POINTGPT_CKPT
+    - POINTMAE_CKPT
+    - PCPMAE_CKPT
+conditions:
+  - clean
+  - random_keep80
+  - random_keep50
+  - random_keep20
+  - random_keep10
+  - structured_keep80
+  - structured_keep50
+  - structured_keep20
+  - structured_keep10
+  - xyz_zero
+metrics:
+  - top1
+  - top2_hit
+  - top5_hit

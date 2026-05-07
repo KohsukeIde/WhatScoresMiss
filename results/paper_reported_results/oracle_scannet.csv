@@ -1,0 +1,5 @@
+model,top1_miou,oracle2_miou,oracle5_miou,best_posthoc_miou
+Concerto,77.78,91.97,97.75,77.80
+Sonata,70.86,87.47,96.70,71.03
+Utonia,75.73,91.16,98.21,75.74
+PTv3,77.16,88.89,96.47,77.29

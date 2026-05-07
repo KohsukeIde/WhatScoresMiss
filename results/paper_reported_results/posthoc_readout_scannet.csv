@@ -1,0 +1,5 @@
+model,top1_miou,best_posthoc_miou,delta_pp
+Concerto,77.78,77.80,0.02
+Sonata,70.86,71.03,0.17
+Utonia,75.73,75.74,0.01
+PTv3,77.16,77.29,0.13

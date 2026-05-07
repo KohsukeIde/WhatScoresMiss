@@ -1,0 +1,5 @@
+model,top1_picture_iou,oracle2_picture_iou,oracle5_picture_iou
+Concerto,40.3,85.8,94.3
+Sonata,35.8,69.7,88.7
+Utonia,29.5,97.5,100.0
+PTv3,49.1,87.8,99.5

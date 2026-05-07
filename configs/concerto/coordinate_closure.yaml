@@ -1,0 +1,20 @@
+experiment: concerto_coordinate_closure
+description: Fit/evaluate coordinate-only targets and compute coordinate closure.
+requires:
+  datasets:
+    - ARKITSCENES_ROOT
+    - SCANNET_ROOT
+    - SCANNETPP_ROOT
+    - S3DIS_ROOT
+    - HM3D_ROOT
+    - STRUCTURED3D_ROOT
+  checkpoints:
+    - CONCERTO_CKPT
+diagnostics:
+  - coordinate_only_closure
+  - target_swap_sensitivity
+coordinate_model:
+  type: mlp
+  input: normalized_xyz
+  hidden_channels: 512
+  layers: 2

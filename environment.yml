@@ -1,0 +1,16 @@
+name: bds
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.9
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - pyyaml
+  - pytest
+  - tqdm
+  - pip
+  - pip:
+      - -e .

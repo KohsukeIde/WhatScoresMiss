@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bds-diagnostics"
+version = "0.1.0"
+description = "Diagnostic operators for point-cloud self-supervised learning evaluation."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Anonymous Authors" }]
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    "matplotlib",
+    "pyyaml",
+    "pytest",
+    "tqdm",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

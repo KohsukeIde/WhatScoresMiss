@@ -1,0 +1,20 @@
+experiment: concerto_target_swap
+description: Measure pretext-loss response to global, cross-image, and cross-scene target swaps.
+requires:
+  datasets:
+    - ARKITSCENES_ROOT
+    - SCANNET_ROOT
+    - SCANNETPP_ROOT
+    - S3DIS_ROOT
+    - HM3D_ROOT
+    - STRUCTURED3D_ROOT
+  checkpoints:
+    - CONCERTO_CKPT
+outputs:
+  - target_swap_losses.csv
+diagnostics:
+  - clean_loss
+  - global_swap_delta
+  - cross_image_delta
+  - cross_scene_delta
+  - target_sensitivity_percent

@@ -1,0 +1,31 @@
+experiment: shapenetpart_object_support
+description: ShapeNetPart retained-support segmentation diagnostics.
+requires:
+  datasets:
+    - SHAPENETPART_ROOT
+  checkpoints:
+    - POINTGPT_CKPT
+    - POINTMAE_CKPT
+    - PCPMAE_CKPT
+conditions:
+  - clean
+  - random_keep80
+  - random_keep50
+  - random_keep20
+  - random_keep10
+  - structured_keep80
+  - structured_keep50
+  - structured_keep20
+  - structured_keep10
+  - part_keep80_per_part
+  - part_keep50_per_part
+  - part_keep20_per_part
+  - part_keep10_per_part
+  - largest_part_removed
+  - xyz_zero
+metric_scope: unique_retained_original_points
+duplicate_logits: mean_by_original_index
+metrics:
+  - class_average_mIoU
+  - instance_average_mIoU
+  - point_topk

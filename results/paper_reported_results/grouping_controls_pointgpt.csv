@@ -1,0 +1,5 @@
+task_metric,row,fps_knn,random_center_knn,voxel_center_knn,radius_fps,random_grouping
+ScanObjectNN top1,PointGPT-S official,90.02,89.50,90.36,91.39,7.57
+ScanObjectNN top1,PointGPT-S no-mask,87.09,83.82,86.57,87.95,8.78
+ShapeNetPart class_avg_iou,PointGPT-S official,83.35,80.49,82.57,83.14,42.61
+ShapeNetPart class_avg_iou,PointGPT-S no-mask,82.87,80.27,81.86,83.08,44.35

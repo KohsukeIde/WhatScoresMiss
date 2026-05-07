@@ -1,0 +1,13 @@
+experiment: pointgpt_grouping_controls
+description: Eval-time grouping controls with checkpoint/readout fixed.
+grouping_modes:
+  - fps_knn
+  - random_center_knn
+  - voxel_center_knn
+  - radius_fps
+  - random_grouping
+conditions:
+  - clean
+  - random_keep20
+  - structured_keep20
+  - xyz_zero

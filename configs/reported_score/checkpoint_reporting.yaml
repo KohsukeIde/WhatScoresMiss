@@ -1,0 +1,17 @@
+experiment: checkpoint_reporting
+description: Compare target-as-selection and held-out selection protocols.
+requires:
+  datasets:
+    - SCANOBJECTNN_ROOT
+  checkpoints:
+    - POINTGPT_CKPT
+    - POINTMAE_CKPT
+    - PCPMAE_CKPT
+splits:
+  - obj_bg
+  - obj_only
+  - pb_t50_rs
+protocols:
+  - standard
+  - heldout_selection
+metric: top1_accuracy

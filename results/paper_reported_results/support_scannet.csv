@@ -1,0 +1,5 @@
+model,clean_miou,random50_miou,structured50_miou
+Concerto,78.64,77.89,52.45
+Sonata,71.60,71.20,48.70
+Utonia,75.80,75.80,52.70
+PTv3,77.10,75.70,49.30

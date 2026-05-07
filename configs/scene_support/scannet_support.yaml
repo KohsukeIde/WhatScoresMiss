@@ -1,0 +1,25 @@
+experiment: scannet_scene_support
+description: Full-scene support perturbations for scene-level rows.
+requires:
+  datasets:
+    - SCANNET_ROOT
+  checkpoints:
+    - CONCERTO_CKPT
+    - SONATA_CKPT
+    - UTONIA_CKPT
+conditions:
+  - clean
+  - random_keep80
+  - random_keep50
+  - random_keep20
+  - random_keep10
+  - structured_keep80
+  - structured_keep50
+  - structured_keep20
+  - structured_keep10
+scoring:
+  - full_scene_nearest_neighbor
+metrics:
+  - mIoU
+  - mAcc
+  - allAcc

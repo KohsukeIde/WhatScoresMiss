@@ -1,0 +1,10 @@
+experiment: class_pair_diagnostics
+description: Pair-specific feature/readout diagnostics.
+pairs:
+  - picture->wall
+  - door->wall
+  - counter->cabinet
+metrics:
+  - feature_probe_balanced_accuracy
+  - head_balanced_accuracy
+  - target_to_confusion_rate

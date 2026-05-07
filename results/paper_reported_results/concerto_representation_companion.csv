@@ -1,0 +1,4 @@
+continuation_target,miou,macc,allacc,delta_vs_cross_modal,gap_recovery_percent
+Cross-modal,47.94,61.14,77.18,,100.0
+Coordinate-MLP,40.64,55.03,74.22,-7.30,6.9
+No image encoder,40.10,54.40,73.91,-7.84,0.0

@@ -1,0 +1,14 @@
+*.csv text
+*.md text
+*.py text
+*.sh text
+*.yaml text
+*.yml text
+*.json text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.pt binary
+*.pth binary
+*.ckpt binary

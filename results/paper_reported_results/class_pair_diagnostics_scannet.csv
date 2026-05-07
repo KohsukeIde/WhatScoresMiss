@@ -1,0 +1,13 @@
+pair,model,fp_ba,head_ba,target_to_confusion
+picture->wall,Concerto,70.41,69.87,43.82
+picture->wall,Sonata,75.01,64.52,47.83
+picture->wall,Utonia,88.47,93.20,12.84
+picture->wall,PTv3,96.26,88.92,23.26
+door->wall,Concerto,86.62,95.18,6.82
+door->wall,Sonata,92.07,92.98,11.45
+door->wall,Utonia,72.94,96.24,5.86
+door->wall,PTv3,93.61,93.85,10.00
+counter->cabinet,Concerto,92.76,93.05,9.47
+counter->cabinet,Sonata,94.87,94.53,8.67
+counter->cabinet,Utonia,67.40,94.99,5.19
+counter->cabinet,PTv3,95.82,97.09,2.20
