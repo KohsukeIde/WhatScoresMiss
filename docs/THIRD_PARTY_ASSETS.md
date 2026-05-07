@@ -6,33 +6,32 @@ sources and comply with the corresponding terms.
 
 ## Datasets
 
-- ScanNet
-- ARKitScenes
-- ScanNet++
-- S3DIS
-- HM3D
-- Structured3D
-- ScanObjectNN
-- ShapeNetPart
-
-See `docs/DATA.md` for path variables and usage notes.
+Dataset sources, access notes, and expected local path variables are listed in
+`docs/DATA.md`.
 
 ## Model Families and Codebases
 
-- Concerto: scene-level cross-modal self-supervised learning diagnostics.
-- Sonata: scene-level self-supervised comparator diagnostics.
-- Utonia: scene-level self-supervised comparator diagnostics.
-- PTv3: supervised scene control diagnostics.
-- PointGPT: object-level autoregressive point-cloud pretraining diagnostics.
-- Point-MAE: object-level masked autoencoding baseline diagnostics.
-- PCP-MAE: side-channel-aware masked autoencoding diagnostics.
+| model/codebase | role in this repository | official project or paper source |
+|---|---|---|
+| Concerto | scene-level cross-modal self-supervised diagnostics | `https://github.com/Pointcept/Concerto`, `https://pointcept.github.io/Concerto/`, `https://arxiv.org/abs/2510.23607` |
+| Sonata | scene-level self-supervised comparator diagnostics | `https://github.com/facebookresearch/sonata`, `https://arxiv.org/abs/2503.16429` |
+| Utonia | scene-level self-supervised comparator diagnostics | `https://arxiv.org/abs/2603.03283` |
+| PTv3 | supervised scene-control diagnostics | `https://github.com/Pointcept/PointTransformerV3`, `https://arxiv.org/abs/2312.10035` |
+| PointGPT | object-level autoregressive point-cloud pretraining diagnostics | `https://github.com/CGuangyan-BIT/PointGPT`, `https://arxiv.org/abs/2305.11487` |
+| Point-MAE | object-level masked-autoencoding baseline diagnostics | `https://github.com/Pang-Yatian/Point-MAE`, `https://arxiv.org/abs/2203.06604` |
+| PCP-MAE | side-channel-aware masked-autoencoding diagnostics | `https://github.com/aHapBean/PCP-MAE`, `https://arxiv.org/abs/2408.08753` |
 
-Where known, use official project releases for pretrained checkpoints and model
-implementations. For any codebase or checkpoint not redistributed here, set the
-environment variables described in `docs/CHECKPOINTS.md`.
+## Checkpoints and External Code
 
-## Papers
+No large checkpoints or external model implementations are bundled here. Level 2
+wrappers validate local paths and document diagnostic entry points. To execute
+full diagnostics, install the corresponding official model codebases, obtain the
+appropriate checkpoints under their release terms, and set the environment
+variables listed in `docs/CHECKPOINTS.md`.
 
-The paper relies on established datasets and model families. Cite the original
-dataset and model papers when using their assets. Verify the final citation list
-before camera-ready submission.
+## Citation Responsibility
+
+When using third-party datasets, checkpoints, or model code, cite the original
+dataset/model papers and follow the official license or terms pages. This
+repository only provides an anonymized diagnostic package for the submitted
+evaluation study.

@@ -8,8 +8,8 @@ The repository provides:
 
 1. CPU smoke tests for diagnostic operators.
 2. Figure and table reproduction from small CSV files.
-3. Scripts and configs for full diagnostics when official datasets and
-   checkpoints are available.
+3. Entry-point wrappers and configs for full diagnostics when official
+   datasets, checkpoints, and external model implementations are available.
 
 ## Reproducibility Levels
 
@@ -37,7 +37,7 @@ pytest -q
 bash scripts/smoke_test.sh
 ```
 
-### Level 2: Full Diagnostics
+### Level 2: Full-diagnostic entry points and configuration wrappers
 
 This level requires official datasets, checkpoints, and suitable GPU hardware.
 Set the required local paths first:
@@ -72,6 +72,10 @@ bash scripts/run_checkpoint_reporting.sh
 The Level 2 scripts validate environment variables and print explicit messages
 when a full external training or evaluation implementation is required. They do
 not pretend to run heavy experiments when datasets or checkpoints are absent.
+These scripts do not bundle the full external model implementations. They
+validate required dataset/checkpoint paths and document the diagnostic entry
+points. To execute full experiments, install the corresponding official model
+codebases and use the configs listed in `docs/REPRODUCIBILITY.md`.
 
 ## Repository Map
 

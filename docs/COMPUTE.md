@@ -3,21 +3,22 @@
 Level 0 and Level 1 are CPU-compatible. They reproduce tables/figures from
 small CSV files and run synthetic tests for diagnostic operators.
 
-Full scene-level and object-level experiments require GPUs and dataset storage.
-Full runs are compute-intensive and depend on the chosen backbone, dataset, and
-checkpoint. The paper reports diagnostics rather than a new training pipeline.
-We provide scripts and configs to reproduce the diagnostic operations when the
-required datasets and checkpoints are available.
+Full scene-level and object-level diagnostics require GPUs, local dataset
+storage, official checkpoints, and the corresponding external model codebases.
+Full runs are compute-intensive and depend on the chosen backbone, dataset,
+cache layout, and checkpoint schedule. This repository provides lightweight
+diagnostic operators, paper-reported CSV summaries, and wrappers/configs for
+running the diagnostic operations when the required external assets are present.
 
 | experiment | expected hardware | approximate runtime | notes |
 |---|---|---|---|
-| table/figure reproduction | CPU | seconds to minutes | reads compact CSVs only |
-| synthetic smoke tests | CPU | seconds to minutes | no datasets/checkpoints |
-| Concerto target-swap response | GPU recommended | fill before submission | depends on cache size and scene datasets |
-| coordinate-only closure | GPU recommended | fill before submission | depends on target-cache extraction and closure fit |
-| representation companion | GPU recommended | fill before submission | continuation/proxy readout runtime depends on backbone and data |
-| PointGPT mask/order relaxations | GPU required for full training | fill before submission | relaxed pretraining and downstream fine-tuning are heavy |
-| scene support perturbations | GPU recommended | fill before submission | can be run from existing scene checkpoints |
-| object support perturbations | GPU recommended | fill before submission | can be run from existing object checkpoints |
-| Oracle@k reported-score diagnostics | CPU/GPU depending on logit extraction | fill before submission | fast if logits are already cached |
-| checkpoint reporting | GPU required for held-out fine-tuning | fill before submission | depends on number of checkpoints and splits |
+| table/figure reproduction | CPU | seconds-minutes | reads compact CSVs only |
+| synthetic smoke tests | CPU | seconds-minutes | no datasets/checkpoints |
+| Concerto target-swap response | GPU recommended | GPU recommended; runtime depends on dataset/cache size and external model code | requires scene datasets and external Concerto-compatible feature extraction |
+| coordinate-only closure | CPU/GPU depending on cache size | minutes once logits or target caches are available | closure fitting is lightweight after target-cache extraction |
+| representation companion | GPU required for continuation/proxy runs | GPU required for full training; runtime depends on backbone, split, and checkpoint schedule | wrapper documents required paths/configs |
+| PointGPT mask/order relaxations | GPU required for full training | GPU required for full training; runtime depends on backbone, split, and checkpoint schedule | relaxed pretraining and downstream fine-tuning require the external PointGPT codebase |
+| scene support perturbations | GPU recommended | GPU recommended; runtime depends on dataset/cache size and external model code | can be run from existing scene checkpoints when logits/features are available |
+| object support perturbations | GPU recommended | GPU recommended; runtime depends on dataset/cache size and external model code | can be run from existing object checkpoints |
+| Oracle@k reported-score diagnostics | CPU/GPU depending on logit extraction | minutes once logits are cached | logit extraction may require GPU, but Oracle@k computation is lightweight |
+| checkpoint reporting | GPU required for held-out fine-tuning | GPU required for full training; runtime depends on backbone, split, and checkpoint schedule | requires checkpoint trajectories or explicit held-out fine-tuning runs |
