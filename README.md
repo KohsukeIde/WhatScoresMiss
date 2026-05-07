@@ -74,8 +74,9 @@ when a full external training or evaluation implementation is required. They do
 not pretend to run heavy experiments when datasets or checkpoints are absent.
 These scripts do not bundle the full external model implementations. They
 validate required dataset/checkpoint paths and document the diagnostic entry
-points. To execute full experiments, install the corresponding official model
-codebases and use the configs listed in `docs/REPRODUCIBILITY.md`.
+points. Full execution requires official datasets, checkpoints, and the
+corresponding external model codebases. Use the configs listed in
+`docs/REPRODUCIBILITY.md`.
 
 ## Repository Map
 
