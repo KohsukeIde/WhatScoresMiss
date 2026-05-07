@@ -53,6 +53,39 @@ def make_support_shapenetpart_figure(csv_path, output_path) -> None:
     _save(fig, output_path)
 
 
+def make_support_scannet_curves_figure(csv_path, output_path) -> None:
+    df = pd.read_csv(csv_path)
+    fig, axes = plt.subplots(1, 2, figsize=(8, 3.5), sharey=True)
+    for ax, perturbation in zip(axes, ["random_keep", "structured_keep"]):
+        sub = df[df["perturbation"] == perturbation]
+        for model, group in sub.groupby("model", sort=False):
+            group = group.sort_values("keep_fraction")
+            ax.plot(group["keep_fraction"], group["miou_percent"], marker="o", label=model)
+        ax.set_title(perturbation.replace("_", " "))
+        ax.set_xlabel("Retained fraction")
+        ax.set_xticks([0.1, 0.2, 0.5, 0.8])
+    axes[0].set_ylabel("mIoU (%)")
+    axes[-1].legend(fontsize="small")
+    _save(fig, output_path)
+
+
+def make_support_shapenetpart_curves_figure(csv_path, output_path) -> None:
+    df = pd.read_csv(csv_path)
+    perturbations = ["random_keep", "structured_keep", "semantic_keep_per_part"]
+    fig, axes = plt.subplots(1, 3, figsize=(10, 3.5), sharey=True)
+    for ax, perturbation in zip(axes, perturbations):
+        sub = df[df["perturbation"] == perturbation]
+        for model, group in sub.groupby("model", sort=False):
+            group = group.sort_values("keep_fraction")
+            ax.plot(group["keep_fraction"], group["instance_miou_percent"], marker="o", label=model)
+        ax.set_title(perturbation.replace("_", " "))
+        ax.set_xlabel("Retained fraction")
+        ax.set_xticks([0.1, 0.2, 0.5, 0.8])
+    axes[0].set_ylabel("Instance mIoU (%)")
+    axes[-1].legend(fontsize="small")
+    _save(fig, output_path)
+
+
 def make_oracle_scannet_figure(csv_path, output_path) -> None:
     df = pd.read_csv(csv_path)
     fig, ax = plt.subplots(figsize=(6.5, 3.5))

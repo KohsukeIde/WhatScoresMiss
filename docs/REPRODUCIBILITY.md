@@ -19,3 +19,11 @@ This document maps paper claims to repository entry points.
 Level 0 reproduces paper tables and figures from `results/paper_reported_results`.
 Level 1 validates the diagnostic operators on synthetic arrays. Level 2 requires
 official datasets/checkpoints and, for several rows, external model code.
+
+The Level 0 CSVs are paper-reported, anonymized summaries exported from the
+experiment ledgers. They are intended to make the submitted tables and figures
+auditable without redistributing raw datasets, checkpoints, generated caches, or
+cluster-specific run scripts. The Level 2 scripts are reproducibility wrappers:
+they document the required inputs and diagnostic entry points, but they are not
+claimed to be byte-for-byte copies of the internal scripts used on the original
+compute environment.
