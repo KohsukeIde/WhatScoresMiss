@@ -1,7 +1,9 @@
-# Beyond Downstream Scores: Reproducibility Package
+# What Downstream Scores Miss in Point-Cloud Self-Supervised Learning
 
-This repository contains anonymized reproduction code for a NeurIPS 2026
-Evaluations & Datasets Track submission. The paper does not introduce a new
+Reproducibility package
+
+This repository contains reproduction code for our NeurIPS 2026
+Evaluations & Datasets Track paper. The paper does not introduce a new
 dataset. Raw datasets are not redistributed.
 
 The repository provides:
@@ -43,9 +45,9 @@ the empirical paper results by themselves.
 
 ### Level 2: Full-diagnostic entry points and configuration wrappers
 
-This level provides real diagnostic entry points and configuration wrappers. It
-requires official datasets, checkpoints, suitable GPU hardware, and the
-corresponding external model codebases.
+This level provides aggregation scripts, configuration wrappers, and sanitized
+patch excerpts. Reproducing full experiments requires official datasets,
+checkpoints, suitable GPU hardware, and the corresponding external model codebases.
 Set the required local paths first:
 
 ```bash

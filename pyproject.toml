@@ -9,7 +9,15 @@ description = "Diagnostic operators for point-cloud self-supervised learning eva
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "Anonymous Authors" }]
+authors = [
+  { name = "Kohsuke Ide" },
+  { name = "Ryousuke Yamada" },
+  { name = "Yue Qiu" },
+  { name = "Yoshihiro Fukuhara" },
+  { name = "Hirokatsu Kataoka" },
+  { name = "Yuki M. Asano" },
+  { name = "Yutaka Satoh" },
+]
 dependencies = [
   "numpy",
   "pandas",
