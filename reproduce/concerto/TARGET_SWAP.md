@@ -12,10 +12,20 @@ than silently changing the sampling rule. For all successful random draws,
 the sampling procedure is unchanged.
 
 `patches/concerto_target_swap.patch` applies to Pointcept commit
-`1342eda30e96cbb5fadf5374ff8eb18f6de15c71`. On a fresh checkout, copy
-`target_swap_ops.py` to `pointcept/models/concerto/bds_target_swap_ops.py`,
-apply the patch, and explicitly set `target_swap_mode` in the model config to
-one of `none`, `global_target_permutation`, `cross_image_target_swap`, or
+`1342eda30e96cbb5fadf5374ff8eb18f6de15c71`. Set `BDS_ROOT` to the absolute
+path of this repository, then prepare a fresh Pointcept checkout:
+
+```bash
+export BDS_ROOT=/path/to/beyond-downstream-scores
+git clone https://github.com/Pointcept/Pointcept.git
+cd Pointcept
+git checkout 1342eda30e96cbb5fadf5374ff8eb18f6de15c71
+cp "$BDS_ROOT/reproduce/concerto/target_swap_ops.py" pointcept/models/concerto/bds_target_swap_ops.py
+git apply "$BDS_ROOT/reproduce/concerto/patches/concerto_target_swap.patch"
+```
+
+Explicitly set `target_swap_mode` in the model config to one of `none`,
+`global_target_permutation`, `cross_image_target_swap`, or
 `cross_scene_target_swap`. The patch preserves the existing prediction path
 and changes the target after feature grouping.
 
