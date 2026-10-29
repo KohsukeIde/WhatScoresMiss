@@ -1,28 +1,66 @@
-diff --git a/tools/target_swap_eval.py b/tools/target_swap_eval.py
-new file mode 100644
---- /dev/null
-+++ b/tools/target_swap_eval.py
-@@
-+"""Sanitized patch excerpt for the target-swap diagnostic.
-+
-+Illustrative excerpt only; this is not an executable or apply-ready patch.
-+The diagnostic
-+keeps the query point features fixed and replaces the pretext target with a
-+target sampled from the configured scope: global, cross-image, or cross-scene.
-+"""
-+
-+def build_swapped_target(batch, target_cache, scope, rng):
-+    if scope == "global":
-+        return target_cache.sample_global(rng)
-+    if scope == "cross_image":
-+        return target_cache.sample_other_image(batch.scene_id, batch.image_id, rng)
-+    if scope == "cross_scene":
-+        return target_cache.sample_other_scene(batch.scene_id, rng)
-+    raise ValueError(f"unknown swap scope: {scope}")
-+
-+def evaluate_target_swap(model, loader, target_cache, criterion, scope):
-+    for batch in loader:
-+        pred = model(batch.points, batch.images)
-+        target = build_swapped_target(batch, target_cache, scope, rng=batch.rng)
-+        loss = criterion(pred, target)
-+        yield {"scene_id": batch.scene_id, "condition": scope, "loss": float(loss)}
+--- a/pointcept/models/concerto/concerto_v1m1_base.py
++++ b/pointcept/models/concerto/concerto_v1m1_base.py
+@@ -20,6 +20,7 @@
+ import pointops
+ from pointcept.models.utils.structure import Point
+ from pointcept.models.builder import MODELS, build_model
++from pointcept.models.concerto.bds_target_swap_ops import TargetSwapOperator
+ from pointcept.models.modules import PointModel
+ from pointcept.models.utils import (
+     offset2batch,
+@@ -126,6 +127,7 @@
+         enc2d_upcast_level=4,
+         enc2d_cos_shift=True,
+         sonata_model_type="offline",
++        target_swap_mode=None,
+     ):
+         super(Concerto, self).__init__()
+         assert sonata_model_type in ["online", "offline"]
+@@ -280,6 +282,13 @@
+ 
+         self.enc2d_cos_shift = enc2d_cos_shift
+         self.sonata_model_type = sonata_model_type
++        if target_swap_mode not in (
++            "none", "global_target_permutation", "cross_image_target_swap",
++            "cross_scene_target_swap",
++        ):
++            raise ValueError("target_swap_mode must be set explicitly")
++        self.target_swap_mode = target_swap_mode
++        self.target_swap_operator = TargetSwapOperator()
+ 
+     def load_enc2d(self, model_name, model_weight):
+         model = AutoModel.from_pretrained(model_weight, trust_remote_code=True)
+@@ -823,13 +832,32 @@
+                 )
+ 
+                 feature_index = feature_index.long()
++                unique_index, inverse_index = torch.unique(
++                    feature_index, sorted=True, return_inverse=True
++                )
++                feature_batch_index = torch_scatter.scatter_min(
++                    batch_index.long(), inverse_index, dim=0,
++                    dim_size=unique_index.shape[0],
++                )[0]
++                feature_image_index = torch.div(
++                    unique_index, self.patch_h * self.patch_w, rounding_mode="floor"
++                )
+                 feature3d_mask = torch_scatter.scatter_mean(
+                     feature3d_mask, feature_index, dim=0, dim_size=feature2d.shape[0]
+                 )
+                 feature3d_mask = self.patch_proj(feature3d_mask)
+-                feature_index = torch.unique(feature_index)
++                feature_index = unique_index
+                 feature2d_mask = feature2d_mask[feature_index]
+                 feature3d_mask = feature3d_mask[feature_index]
++                if self.target_swap_mode == "cross_scene_target_swap":
++                    target_group = feature_batch_index
++                elif self.target_swap_mode == "cross_image_target_swap":
++                    target_group = feature_image_index
++                else:
++                    target_group = None
++                feature2d_mask = self.target_swap_operator.apply(
++                    feature2d_mask, self.target_swap_mode, target_group
++                )
+ 
+                 if self.enc2d_cos_shift:
+                     feature2d_mask = feature2d_mask - feature2d_mask.mean(

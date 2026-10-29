@@ -11,14 +11,15 @@ entry points, sanitized patch excerpts, configs, and provenance-summary
 aggregators; full execution requires official datasets/checkpoints and, for
 several rows, external model code.
 
-The patch files listed below are sanitized excerpts that identify the relevant
-code changes. They are not complete vendored replacements for the external
-repositories, and full execution requires applying or adapting the corresponding
-changes inside the listed external codebases.
+The patch files listed below are not complete vendored replacements for external
+repositories. Most are illustrative excerpts; the Concerto target-swap and
+PointGPT grouping patches are apply-ready for the explicitly specified upstream
+commits. Full execution also requires the documented datasets, checkpoints,
+model code, and experiment configuration.
 
 | paper component | Level 2 entry point | config or patch | required external assets | expected ledger/output | Level 0 summary |
 |---|---|---|---|---|---|
-| Concerto target-swap response | `scripts/run_concerto_target_swap.sh`; `reproduce/concerto/target_swap.py` | `reproduce/concerto/configs/*_target_swap.yaml`; `reproduce/concerto/patches/concerto_target_swap.patch` | Concerto-compatible code, scene datasets, `CONCERTO_CKPT` | `results/ledgers/concerto_loss_runs.csv` | `results/paper_reported_results/concerto_pretext_diagnostics.csv` |
+| Concerto target-swap response | `scripts/run_concerto_target_swap.sh` (ledger aggregation); `reproduce/concerto/target_swap_ops.py` | `reproduce/concerto/TARGET_SWAP.md`; `reproduce/concerto/patches/concerto_target_swap.patch` | Concerto-compatible code, scene datasets, `CONCERTO_CKPT` | `results/ledgers/concerto_loss_runs.csv` | `results/paper_reported_results/concerto_pretext_diagnostics.csv` |
 | Coordinate-only closure | `scripts/run_concerto_coordinate_closure.sh`; `reproduce/concerto/coordinate_only_closure.py` | `configs/concerto/coordinate_closure.yaml`; `reproduce/concerto/patches/concerto_coordinate_target.patch` | target caches or external Concerto-compatible extraction code | `results/ledgers/concerto_closure_fit_runs.csv` | `results/paper_reported_results/concerto_pretext_diagnostics.csv` |
 | Concerto representation-level companion | `scripts/run_concerto_representation_companion.sh`; `reproduce/concerto/representation_companion.py` | `configs/concerto/representation_companion.yaml`; `reproduce/concerto/representation_companion_config.md` | Concerto-compatible continuation/proxy code, ScanNet, checkpoint | `results/ledgers/concerto_representation_companion_runs.csv` | `results/paper_reported_results/concerto_representation_companion.csv` |
 | PointGPT mask/order relaxations | `scripts/run_pointgpt_mask_order_relaxations.sh`; `reproduce/pointgpt/aggregate_pointgpt_results.py` | `reproduce/pointgpt/configs/*.yaml`; `reproduce/pointgpt/patches/disable_mask.patch`; `reproduce/pointgpt/patches/randomize_order.patch` | official PointGPT code, ScanObjectNN, ShapeNetPart, trained relaxed checkpoints | `results/ledgers/pointgpt_pretext_logs.csv`; `results/ledgers/pointgpt_downstream_eval_runs.csv` | `results/paper_reported_results/pointgpt_mask_order_relaxations.csv` |

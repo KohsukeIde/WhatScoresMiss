@@ -15,3 +15,4 @@
 # Preserve upstream patch context and the byte-identical archived module.
 reproduce/pointgpt/original_r7c/pointgpt_grouping.patch whitespace=-trailing-space
 reproduce/pointgpt/original_r7c/rebuttal_eval/__init__.py whitespace=-blank-at-eof
+reproduce/concerto/patches/concerto_target_swap.patch whitespace=-trailing-space

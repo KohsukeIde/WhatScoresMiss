@@ -48,9 +48,9 @@ they are not a complete end-to-end training implementation. A user-provided
 checkpoint can be set with `POINTGPT_CKPT`.
 
 Most patch files in this repository are sanitized excerpts and are not complete
-vendored replacements for external repositories. The grouping patch documented
-in `reproduce/pointgpt/original_r7c/README.md` is an apply-ready exception for
-the specified PointGPT commit.
+vendored replacements for external repositories. The PointGPT grouping patch and
+Concerto target-swap patch are apply-ready for the specified upstream commits;
+see their respective setup instructions.
 
 The wrapper scripts do not download checkpoints automatically. They check for
 the required variables and print a clear message when a checkpoint is missing.

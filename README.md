@@ -38,6 +38,8 @@ The repository provides:
 
 The original PointGPT ShapeNetPart retention driver and its setup instructions
 are available in [`reproduce/pointgpt/original_r7c/`](reproduce/pointgpt/original_r7c/).
+The Concerto target-swap operator and upstream patch are described in
+[`reproduce/concerto/TARGET_SWAP.md`](reproduce/concerto/TARGET_SWAP.md).
 
 ## Reproducibility Levels
 
