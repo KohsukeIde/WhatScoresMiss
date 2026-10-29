@@ -2,8 +2,8 @@
 
 The full target extraction/inference loop depends on an external
 Concerto-compatible codebase. This script implements the paper diagnostic
-aggregation from a loss provenance summary and prints the exact external
-command when the model code is available.
+aggregation from a loss provenance summary. It does not run external
+model inference.
 """
 
 from __future__ import annotations
@@ -48,14 +48,9 @@ def main() -> None:
 
     out = aggregate(Path(args.loss_ledger), Path(args.output))
     print(out.to_string(index=False))
+    print("Aggregation ran from the provenance summary; no external Concerto inference was launched.")
     if args.external_code_root:
-        print("External run entry point:")
-        print(
-            "python <external_concerto>/tools/target_swap_eval.py "
-            f"--config {args.config} --output-root $OUTPUT_ROOT"
-        )
-    else:
-        print("External Concerto code not bundled; aggregation ran from the sanitized provenance summary.")
+        print("A complete target-swap inference entry point is not included in this package.")
 
 
 if __name__ == "__main__":

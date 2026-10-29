@@ -43,15 +43,14 @@ assets are in `reproduce/pointgpt/original_r7c/README.md`.
 ## Local Variants
 
 PointGPT relaxed mask/order variants are not redistributed as checkpoints.
-They can be recreated by running the corresponding external training pipeline
-with `reproduce/pointgpt/configs/*.yaml` and the patches under
-`reproduce/pointgpt/patches/`, or loaded by setting `POINTGPT_CKPT` to a
-user-provided checkpoint.
+The configs and excerpts under `reproduce/pointgpt/` document the changes;
+they are not a complete end-to-end training implementation. A user-provided
+checkpoint can be set with `POINTGPT_CKPT`.
 
-Patch files in this repository are sanitized excerpts. They identify the
-relevant changes used by the diagnostics, but they are not complete vendored
-replacements for the external repositories. Full execution requires applying or
-adapting the corresponding changes inside the listed official codebases.
+Most patch files in this repository are sanitized excerpts and are not complete
+vendored replacements for external repositories. The grouping patch documented
+in `reproduce/pointgpt/original_r7c/README.md` is an apply-ready exception for
+the specified PointGPT commit.
 
 The wrapper scripts do not download checkpoints automatically. They check for
 the required variables and print a clear message when a checkpoint is missing.

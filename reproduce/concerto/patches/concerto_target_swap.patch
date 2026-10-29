@@ -5,7 +5,8 @@ new file mode 100644
 @@
 +"""Sanitized patch excerpt for the target-swap diagnostic.
 +
-+Apply inside an external Concerto-compatible evaluation tree. The diagnostic
++Illustrative excerpt only; this is not an executable or apply-ready patch.
++The diagnostic
 +keeps the query point features fixed and replaces the pretext target with a
 +target sampled from the configured scope: global, cross-image, or cross-scene.
 +"""
