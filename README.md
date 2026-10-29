@@ -43,6 +43,8 @@ The repository provides:
 This level does not require raw datasets, checkpoints, or GPUs.
 
 ```bash
+git clone https://github.com/KohsukeIde/beyond-downstream-scores.git
+cd beyond-downstream-scores
 conda env create -f environment.yml
 conda activate bds
 bash scripts/make_tables.sh
