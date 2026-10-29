@@ -60,7 +60,7 @@ This checks the scoring operation; it does not run PointGPT inference.
 The Level 0 CSVs are paper-reported summaries. The
 `results/ledgers/` files are sanitized provenance summaries derived from the
 paper-reported experimental records; they are not raw model outputs, raw run
-logs, or checkpoint artifacts. The Level 2 scripts are reproducibility wrappers
-around the diagnostic code in `reproduce/`: they document the required inputs and
-entry points, but they are not claimed to be byte-for-byte copies of internal
-cluster scripts.
+logs, or checkpoint artifacts. The Level 2 wrappers document required inputs
+and entry points. The PointGPT retention directory separately includes the
+original evaluation helpers and the driver with four arguments made explicit;
+the remaining wrappers are not complete copies of the cluster pipelines.

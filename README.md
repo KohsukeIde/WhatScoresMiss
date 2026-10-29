@@ -114,10 +114,10 @@ not pretend to run heavy experiments when datasets or checkpoints are absent.
 These scripts do not bundle the full external model implementations. They
 check whether required dataset/checkpoint environment variables are set and
 document the diagnostic entry points. Full execution requires official datasets,
-checkpoints, and the corresponding external model codebases. The patch files in `reproduce/` are
-sanitized excerpts that identify the relevant code changes; they are not
-complete vendored replacements for the external repositories. Use the configs
-listed in `docs/REPRODUCIBILITY.md`.
+checkpoints, and the corresponding external model codebases. Most patches are illustrative excerpts;
+the Concerto target-swap and PointGPT grouping patches apply to the documented
+upstream commits. They are not complete vendored model repositories. See
+`docs/REPRODUCIBILITY.md` for the scope of each entry point.
 
 ## Repository Map
 
