@@ -19,6 +19,15 @@ one of `none`, `global_target_permutation`, `cross_image_target_swap`, or
 `cross_scene_target_swap`. The patch preserves the existing prediction path
 and changes the target after feature grouping.
 
+The condition names used in the result ledger map to model settings as follows:
+
+| Ledger condition | `model.target_swap_mode` |
+|---|---|
+| `clean` | `none` |
+| `global_swap` | `global_target_permutation` |
+| `cross_image_swap` | `cross_image_target_swap` |
+| `cross_scene_swap` | `cross_scene_target_swap` |
+
 The patch provides the target-swap intervention, not a complete reproduction
 of the six-dataset experiment. The short-refit 2D projection head, original
 Pointcept data configuration, six datasets, and checkpoints must also be
