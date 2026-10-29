@@ -50,7 +50,8 @@ the original scorer and replay CSV are available:
 ```bash
 python scripts/verify_pointgpt_scoring.py \
   --reference /path/to/rebuttal_eval/r7.py \
-  --reference-csv /path/to/original/replay_curves.csv
+  --reference-csv /path/to/original/replay_curves.csv \
+  --pointgpt-code-root /path/to/original/PointGPT
 ```
 
 This checks the scoring operation; it does not run PointGPT inference.

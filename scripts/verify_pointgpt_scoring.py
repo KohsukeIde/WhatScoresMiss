@@ -19,6 +19,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--reference", required=True, help="Path to original rebuttal_eval/r7.py")
     parser.add_argument("--reference-csv", required=True, help="Path to original replay support-curve CSV")
+    parser.add_argument("--pointgpt-code-root", required=True, help="Path to the rebuttal PointGPT checkout")
     args = parser.parse_args()
     spec = importlib.util.spec_from_file_location("pointgpt_reference", args.reference)
     if spec is None or spec.loader is None:
@@ -78,7 +79,25 @@ def main() -> None:
         np.testing.assert_allclose(float(row["value"]),
                                    float(original[row["condition"]]["instance_miou_percent"]),
                                    rtol=0, atol=1e-12)
-    print("PASS: 200 shapes match the original scorer; CLI and all 13 replay rows match")
+    reference_root = Path(args.pointgpt_code_root)
+    bundled = Path("reproduce/pointgpt/original_r7c")
+    for name in ("__init__.py", "determinism.py", "r7.py", "r7c.py"):
+        if (bundled / "rebuttal_eval" / name).read_bytes() != (reference_root / "rebuttal_eval" / name).read_bytes():
+            raise AssertionError(f"original helper mismatch: {name}")
+    driver_path = "segmentation/eval_shapenetpart_r7c_correction.py"
+    original_driver = (reference_root / driver_path).read_text()
+    for old, new in (
+        ('parser.add_argument("--seed", type=int, default=0)', 'parser.add_argument("--seed", type=int, required=True)'),
+        ('parser.add_argument("--replicates", type=int, default=2)', 'parser.add_argument("--replicates", type=int, required=True)'),
+        ('parser.add_argument("--batch_size", type=int, default=16)', 'parser.add_argument("--batch_size", type=int, required=True)'),
+        ('        default=BASE_SAMPLING_UNIQUE_RAW_ID,', '        required=True,'),
+    ):
+        if original_driver.count(old) != 1:
+            raise AssertionError(f"original driver changed: {old}")
+        original_driver = original_driver.replace(old, new, 1)
+    if (bundled / driver_path).read_text() != original_driver:
+        raise AssertionError("bundled driver differs beyond the four explicit protocol arguments")
+    print("PASS: 200 shapes match the original scorer; CLI, 13 replay rows, and bundled sources match")
 
 
 if __name__ == "__main__":
