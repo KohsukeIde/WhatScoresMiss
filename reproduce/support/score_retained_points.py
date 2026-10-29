@@ -1,4 +1,4 @@
-"""Score segmentation predictions on unique retained original points."""
+"""Compute ShapeNetPart instance mIoU from per-shape retained-point logits."""
 
 from __future__ import annotations
 
@@ -6,22 +6,23 @@ import argparse
 
 import numpy as np
 
-from bds.retained_scoring import average_duplicate_logits, mean_iou
+from bds.retained_scoring import unique_retained_shape_part_iou
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--logits-npz", required=True, help="NPZ with logits, target, and original_indices arrays.")
-    parser.add_argument("--num-classes", type=int, required=True)
-    parser.add_argument("--ignore-index", type=int, default=None)
+    parser.add_argument(
+        "--logits-npz", nargs="+", required=True,
+        help="One NPZ per shape with logits, target, original_indices, and valid_part_ids.",
+    )
     args = parser.parse_args()
-
-    data = np.load(args.logits_npz)
-    unique_idx, avg_logits = average_duplicate_logits(data["logits"], data["original_indices"])
-    target_full = data["target"]
-    target = target_full[unique_idx]
-    pred = avg_logits.argmax(axis=1)
-    print(mean_iou(pred, target, args.num_classes, args.ignore_index))
+    scores = []
+    for path in args.logits_npz:
+        with np.load(path, allow_pickle=False) as data:
+            scores.append(unique_retained_shape_part_iou(
+                data["logits"], data["target"], data["original_indices"], data["valid_part_ids"]
+            ))
+    print(f"instance_miou_percent={100.0 * np.mean(scores):.8f} shapes={len(scores)}")
 
 
 if __name__ == "__main__":

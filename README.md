@@ -31,16 +31,18 @@ dataset or redistribute raw datasets.
 The repository provides:
 
 1. CPU smoke tests for diagnostic operators.
-2. Figure and table reproduction from small CSV files.
+2. Tables and plots generated from paper-reported summary CSV files.
 3. Diagnostic reproduction entry points, sanitized patch excerpts, configs, and
    provenance summaries for the empirical analyses when official datasets,
    checkpoints, and external model implementations are available.
 
 ## Reproducibility Levels
 
-### Level 0: Tables and Figures from CSVs
+### Level 0: Tables and Plots from CSVs
 
-This level does not require raw datasets, checkpoints, or GPUs.
+This level does not require raw datasets, checkpoints, or GPUs. It produces
+tables and summary plots from the recorded values; plot styling may differ from
+the figures in the paper.
 
 ```bash
 git clone https://github.com/KohsukeIde/beyond-downstream-scores.git
@@ -105,9 +107,9 @@ The Level 2 scripts validate environment variables and print explicit messages
 when a full external training or evaluation implementation is required. They do
 not pretend to run heavy experiments when datasets or checkpoints are absent.
 These scripts do not bundle the full external model implementations. They
-validate required dataset/checkpoint paths and document the diagnostic entry
-points. Full execution requires official datasets, checkpoints, and the
-corresponding external model codebases. The patch files in `reproduce/` are
+check whether required dataset/checkpoint environment variables are set and
+document the diagnostic entry points. Full execution requires official datasets,
+checkpoints, and the corresponding external model codebases. The patch files in `reproduce/` are
 sanitized excerpts that identify the relevant code changes; they are not
 complete vendored replacements for the external repositories. Use the configs
 listed in `docs/REPRODUCIBILITY.md`.

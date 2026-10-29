@@ -1,5 +1,9 @@
 experiment: pointgpt_support_tests
 description: Object support tests with checkpoint and readout fixed.
+base_sampling: original_replacement
+fixed_size_input: support_preserving
+seed: 0
+perturbation_replicates: 2
 conditions:
   - clean
   - random_keep80
@@ -18,3 +22,5 @@ conditions:
 metric_scope:
   segmentation: unique_retained_original_points
   duplicate_logits: mean_by_original_index
+  part_prediction: category_restricted
+  aggregation: per_shape_instance_miou

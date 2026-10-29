@@ -3,7 +3,8 @@
 This document maps paper claims to repository entry points, sanitized
 provenance summaries, and compact summary CSVs.
 
-Level 0 reproduces paper tables and figures from `results/paper_reported_results`.
+Level 0 generates tables and plots from `results/paper_reported_results`; plot
+styling may differ from the figures in the paper.
 Level 1 validates the diagnostic operators on synthetic arrays. Synthetic tests
 do not reproduce the empirical paper results. Level 2 provides real diagnostic
 entry points, sanitized patch excerpts, configs, and provenance-summary
@@ -29,7 +30,29 @@ changes inside the listed external codebases.
 | Tables from CSVs | `scripts/make_tables.sh` | none | none | `results/generated_tables/` | all `results/paper_reported_results/*.csv` |
 | Figures from CSVs | `scripts/make_figures.sh` | none | none | `results/generated_figures/` | selected `results/paper_reported_results/*.csv` |
 
-The Level 0 CSVs are paper-reported, anonymized summaries. The
+For ShapeNetPart retained-point scoring, `reproduce/support/score_retained_points.py`
+expects one `.npz` file per shape with `logits`, per-input-position `target`,
+`original_indices`, and the category-specific `valid_part_ids`. It averages
+logits for duplicate original IDs, restricts predictions to the valid parts,
+assigns IoU 1 to a valid part absent from prediction and target, and then averages
+per-shape IoU across the supplied files. For example:
+
+```bash
+python -m reproduce.support.score_retained_points --logits-npz shape_1.npz shape_2.npz
+```
+
+The original PointGPT rebuttal scorer can be checked on synthetic inputs when
+the original scorer and replay CSV are available:
+
+```bash
+python scripts/verify_pointgpt_scoring.py \
+  --reference /path/to/rebuttal_eval/r7.py \
+  --reference-csv /path/to/original/replay_curves.csv
+```
+
+This checks the scoring operation; it does not run PointGPT inference.
+
+The Level 0 CSVs are paper-reported summaries. The
 `results/ledgers/` files are sanitized provenance summaries derived from the
 paper-reported experimental records; they are not raw model outputs, raw run
 logs, or checkpoint artifacts. The Level 2 scripts are reproducibility wrappers

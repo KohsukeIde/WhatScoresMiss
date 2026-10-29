@@ -1,4 +1,4 @@
 model,clean_inst_miou,random50_inst_miou,structured50_inst_miou,semantic50_inst_miou
-PointGPT,81.88,69.75,65.64,69.58
+PointGPT,85.53,84.42,82.12,84.20
 Point-MAE,86.08,85.93,78.95,85.91
 PCP-MAE,85.83,85.82,77.81,85.61
