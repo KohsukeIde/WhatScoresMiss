@@ -33,5 +33,4 @@ variables listed in `docs/CHECKPOINTS.md`.
 
 When using third-party datasets, checkpoints, or model code, cite the original
 dataset/model papers and follow the official license or terms pages. This
-repository only provides an anonymized diagnostic package for the submitted
-evaluation study.
+repository provides a diagnostic package for the evaluation study.

@@ -1,10 +1,32 @@
+<div align="center">
+
 # What Downstream Scores Miss in Point-Cloud Self-Supervised Learning
 
-Reproducibility package
+[![Project Page](https://img.shields.io/badge/Project-Page-orange)](https://kohsukeide.github.io/projects/beyond-downstream-scores/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
-This repository contains reproduction code for our NeurIPS 2026
-Evaluations & Datasets Track paper. The paper does not introduce a new
-dataset. Raw datasets are not redistributed.
+Kohsuke Ide<sup>1,2</sup> · Ryousuke Yamada<sup>1,3</sup> · Yue Qiu<sup>1</sup> · Yoshihiro Fukuhara<sup>1,4</sup><br>
+Hirokatsu Kataoka<sup>1,5</sup> · Yuki M. Asano<sup>3</sup> · Yutaka Satoh<sup>1,2</sup>
+
+<sup>1</sup>AIST &nbsp; <sup>2</sup>University of Tsukuba &nbsp; <sup>3</sup>Fundamental AI Lab, University of Technology Nuremberg<br>
+<sup>4</sup>CADDi &nbsp; <sup>5</sup>Visual Geometry Group, University of Oxford
+
+**NeurIPS 2026 Evaluations & Datasets Track · Spotlight**
+
+<img src="assets/teaser.png" alt="Three diagnostics for interpreting point-cloud self-supervised learning scores" width="100%">
+
+</div>
+
+## Overview
+
+Downstream scores show benchmark performance but do not identify why a
+point-cloud self-supervised representation improves. We use controlled
+diagnostics to examine three parts of the evaluation pipeline: the pretext
+objective, the visible geometric support, and the downstream readout and
+reporting protocol.
+
+This repository contains code for the paper. It does not introduce a new
+dataset or redistribute raw datasets.
 
 The repository provides:
 
