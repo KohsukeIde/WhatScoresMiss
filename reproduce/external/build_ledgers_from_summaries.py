@@ -213,8 +213,16 @@ def support_runs() -> None:
                 "checkpoint_source": r["selection_protocol"],
                 "metric": "instance_miou_percent",
                 "value": r["instance_miou_percent"],
-                "source_script": "reproduce/support/score_retained_points.py",
-                "config": "configs/object_support/shapenetpart_support.yaml",
+                "seed": 0 if r["model"] == "PointGPT-S official" else "",
+                "source_script": (
+                    "PointGPT/segmentation/eval_shapenetpart_r7c_correction.py"
+                    if r["model"] == "PointGPT-S official" else "paper-reported summary"
+                ),
+                "config": (
+                    "original_replacement; support_preserving; replicates=2"
+                    if r["model"] == "PointGPT-S official"
+                    else "configs/object_support/shapenetpart_support.yaml"
+                ),
                 "notes": f"scope={r['metric_scope']}; aggregation={r['logit_aggregation']}; source={r['source_result']}",
             }
         )

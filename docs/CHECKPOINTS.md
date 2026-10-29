@@ -32,6 +32,14 @@ diagnostics from raw datasets/checkpoints, set the relevant code roots:
 Official project and paper sources for these codebases are listed in
 `docs/THIRD_PARTY_ASSETS.md`.
 
+## PointGPT ShapeNetPart retention replay
+
+The recorded PointGPT-S segmentation checkpoint for the corrected retention
+results has SHA-256
+`96079848c187d681f3a66aaf7860fa5a7b3a3882df66a4efddf5a9a5fd9c4002`.
+It is not included here. Instructions for the replay and required external
+assets are in `reproduce/pointgpt/original_r7c/README.md`.
+
 ## Local Variants
 
 PointGPT relaxed mask/order variants are not redistributed as checkpoints.

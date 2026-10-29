@@ -30,6 +30,9 @@ changes inside the listed external codebases.
 | Tables from CSVs | `scripts/make_tables.sh` | none | none | `results/generated_tables/` | all `results/paper_reported_results/*.csv` |
 | Figures from CSVs | `scripts/make_figures.sh` | none | none | `results/generated_figures/` | selected `results/paper_reported_results/*.csv` |
 
+The original PointGPT rebuttal retention driver, helper modules, grouping patch,
+and setup instructions are in `reproduce/pointgpt/original_r7c/`.
+
 For ShapeNetPart retained-point scoring, `reproduce/support/score_retained_points.py`
 expects one `.npz` file per shape with `logits`, per-input-position `target`,
 `original_indices`, and the category-specific `valid_part_ids`. It averages

@@ -36,6 +36,9 @@ The repository provides:
    provenance summaries for the empirical analyses when official datasets,
    checkpoints, and external model implementations are available.
 
+The original PointGPT ShapeNetPart retention driver and its setup instructions
+are available in [`reproduce/pointgpt/original_r7c/`](reproduce/pointgpt/original_r7c/).
+
 ## Reproducibility Levels
 
 ### Level 0: Tables and Plots from CSVs
