@@ -1,0 +1,9 @@
+dataset,model,setting,seed,clean,z_axis_drop_pp,so3_drop_pp
+ScanObjectNN_obj_bg,PointGPT-S,official,1,91.6,48.5,68.9
+ScanObjectNN_obj_bg,PointGPT-S,official,2,89.3,48.4,69.8
+ScanObjectNN_obj_bg,PointGPT-S,no_mask,1,87.4,48.2,65.4
+ScanObjectNN_obj_bg,PointGPT-S,no_mask,2,88.3,50.6,68.8
+ScanObjectNN_obj_bg,PointGPT-S,no_mask_random_order,1,90.2,48.8,68.2
+ScanObjectNN_obj_bg,PointGPT-S,no_mask_random_order,2,88.8,48.8,68.9
+ShapeNetPart,PointGPT-S,official,,85.26,49.53,52.58
+ShapeNetPart,Point-MAE,official_release,,85.88,50.71,53.35

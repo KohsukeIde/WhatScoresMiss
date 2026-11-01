@@ -1,0 +1,6 @@
+condition,scannet_linear_miou
+default,77.71
+z_only,77.78
+hilbert_only,77.83
+locality_preserving,77.42
+locality_destroying,77.00

@@ -2,7 +2,7 @@
 
 # What Downstream Scores Miss in Point-Cloud Self-Supervised Learning
 
-[![Project Page](https://img.shields.io/badge/Project-Page-orange)](https://kohsukeide.github.io/projects/beyond-downstream-scores/)
+[![Project Page](https://img.shields.io/badge/Project-Page-orange)](https://kohsukeide.github.io/projects/what-scores-miss/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
 Kohsuke Ide<sup>1,2</sup> · Ryousuke Yamada<sup>1,3</sup> · Yue Qiu<sup>1</sup> · Yoshihiro Fukuhara<sup>1,4</sup><br>
@@ -40,6 +40,12 @@ The original PointGPT ShapeNetPart retention driver and its setup instructions
 are available in [`reproduce/pointgpt/original_r7c/`](reproduce/pointgpt/original_r7c/).
 The Concerto target-swap operator and upstream patch are described in
 [`reproduce/concerto/TARGET_SWAP.md`](reproduce/concerto/TARGET_SWAP.md).
+The object-level rotation evaluation is in
+[`reproduce/pointgpt/rotation/`](reproduce/pointgpt/rotation/), and the Concerto
+serialization conditions are in
+[`reproduce/concerto/serialization/`](reproduce/concerto/serialization/). The
+ScanObjectNN held-out split and fine-tuning chain for Point-MAE and PCP-MAE are in
+[`3D-NEPA/scripts/object_ssl/`](https://github.com/KohsukeIde/3D-NEPA/tree/main/scripts/object_ssl).
 
 ## Reproducibility Levels
 
@@ -133,7 +139,7 @@ upstream commits. They are not complete vendored model repositories. See
   figure reproduction.
 - `docs/`: dataset, checkpoint, compute, reproducibility, and third-party notes.
 
-## Notes for Review
+## Notes on Recorded Results
 
 The CSV files under `results/paper_reported_results/` are paper-reported
 summaries for Level 0 reproduction. They are not raw model outputs and should
@@ -143,3 +149,22 @@ requires the official datasets and checkpoints listed in `docs/DATA.md` and
 under `results/ledgers/` are sanitized provenance summaries derived from the
 paper-reported experimental records. They are not raw model outputs, raw cluster
 logs, or checkpoint artifacts.
+
+## Citation
+
+```bibtex
+@inproceedings{ide2026whatscoresmiss,
+  title     = {What Downstream Scores Miss in Point-Cloud Self-Supervised Learning},
+  author    = {Ide, Kohsuke and Yamada, Ryousuke and Qiu, Yue and Fukuhara, Yoshihiro and Kataoka, Hirokatsu and Asano, Yuki M. and Satoh, Yutaka},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS), Evaluations and Datasets Track},
+  year      = {2026}
+}
+```
+
+## Acknowledgements
+
+This repository builds on [Point-MAE](https://github.com/Pang-Yatian/Point-MAE),
+[PointGPT](https://github.com/CGuangyan-BIT/PointGPT),
+[PCP-MAE](https://github.com/aHapBean/PCP-MAE), and
+[Pointcept](https://github.com/Pointcept/Pointcept). See
+`docs/THIRD_PARTY_ASSETS.md` for details.
