@@ -16,7 +16,7 @@ the sampling procedure is unchanged.
 path of this repository, then prepare a fresh Pointcept checkout:
 
 ```bash
-export BDS_ROOT=/path/to/beyond-downstream-scores
+export BDS_ROOT=/path/to/WhatScoresMiss
 git clone https://github.com/Pointcept/Pointcept.git
 cd Pointcept
 git checkout 1342eda30e96cbb5fadf5374ff8eb18f6de15c71

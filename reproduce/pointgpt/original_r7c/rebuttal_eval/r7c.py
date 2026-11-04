@@ -135,13 +135,13 @@ def array_sha256(value: np.ndarray) -> str:
 
 
 def validate_keep_fraction(keep_fraction: float) -> None:
-    """Mirror beyond-downstream-scores/src/bds/support.py:8-11."""
+    """Mirror WhatScoresMiss/src/bds/support.py:8-11."""
     if not 0.0 < keep_fraction <= 1.0:
         raise ValueError("keep_fraction must satisfy 0 < keep_fraction <= 1")
 
 
 def keep_count(n_points: int, keep_fraction: float) -> int:
-    """Mirror beyond-downstream-scores/src/bds/support.py:14-18."""
+    """Mirror WhatScoresMiss/src/bds/support.py:14-18."""
     if n_points <= 0:
         raise ValueError("n_points must be positive")
     validate_keep_fraction(keep_fraction)
@@ -151,7 +151,7 @@ def keep_count(n_points: int, keep_fraction: float) -> int:
 def random_keep_indices(
     n_points: int, keep_fraction: float, seed: int
 ) -> np.ndarray:
-    """Mirror beyond-downstream-scores/src/bds/support.py:21-25 exactly."""
+    """Mirror WhatScoresMiss/src/bds/support.py:21-25 exactly."""
     keep_n = keep_count(n_points, keep_fraction)
     rng = np.random.default_rng(seed)
     return np.sort(rng.choice(n_points, size=keep_n, replace=False))
@@ -160,7 +160,7 @@ def random_keep_indices(
 def structured_keep_by_anchor(
     xyz: np.ndarray, keep_fraction: float, seed: int
 ) -> np.ndarray:
-    """Mirror beyond-downstream-scores/src/bds/support.py:58-69 exactly."""
+    """Mirror WhatScoresMiss/src/bds/support.py:58-69 exactly."""
     xyz = np.asarray(xyz, dtype=float)
     if xyz.ndim != 2 or xyz.shape[1] != 3:
         raise ValueError("xyz must have shape (N, 3)")
@@ -176,7 +176,7 @@ def structured_keep_by_anchor(
 def semantic_keep_indices(
     labels: np.ndarray, keep_fraction: float, seed: int
 ) -> np.ndarray:
-    """Mirror beyond-downstream-scores/src/bds/support.py:72-84 exactly."""
+    """Mirror WhatScoresMiss/src/bds/support.py:72-84 exactly."""
     labels = np.asarray(labels)
     if labels.ndim != 1:
         raise ValueError("labels must be one-dimensional")
@@ -886,11 +886,11 @@ def materialize_frozen_plan(
             "identity_space": "unique raw row IDs within each evaluated object file",
             "input_map": "support_preserving fixed-npoint map from rebuttal_eval/r7.py:79-87",
             "operator_sources": {
-                RANDOM_KEEP: "beyond-downstream-scores/src/bds/support.py:21-25",
-                STRUCTURED_KEEP: "beyond-downstream-scores/src/bds/support.py:58-69",
-                SEMANTIC_KEEP: "beyond-downstream-scores/src/bds/support.py:72-84",
+                RANDOM_KEEP: "WhatScoresMiss/src/bds/support.py:21-25",
+                STRUCTURED_KEEP: "WhatScoresMiss/src/bds/support.py:58-69",
+                SEMANTIC_KEEP: "WhatScoresMiss/src/bds/support.py:72-84",
                 "dispatch": (
-                    "beyond-downstream-scores/reproduce/support/"
+                    "WhatScoresMiss/reproduce/support/"
                     "apply_object_support.py:13-22"
                 ),
             },

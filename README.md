@@ -57,8 +57,8 @@ tables and summary plots from the recorded values; plot styling may differ from
 the figures in the paper.
 
 ```bash
-git clone https://github.com/KohsukeIde/beyond-downstream-scores.git
-cd beyond-downstream-scores
+git clone https://github.com/KohsukeIde/WhatScoresMiss.git
+cd WhatScoresMiss
 conda env create -f environment.yml
 conda activate bds
 bash scripts/make_tables.sh

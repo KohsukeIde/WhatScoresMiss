@@ -18,7 +18,7 @@ The following commands prepare a **fresh** PointGPT checkout. Set `BDS_ROOT`
 to the absolute path of this repository before changing directories:
 
 ```bash
-export BDS_ROOT=/path/to/beyond-downstream-scores
+export BDS_ROOT=/path/to/WhatScoresMiss
 git clone https://github.com/CGuangyan-BIT/PointGPT.git
 cd PointGPT
 git checkout 9ba3d40e3aaa0933761639345b90db39c2295e96
