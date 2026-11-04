@@ -1,7 +1,8 @@
 <div align="center">
 
-# What Downstream Scores Miss in Point-Cloud Self-Supervised Learning
+# What Downstream Scores Miss in Point-Cloud Self-Supervised Learning (NeurIPS 2026 Spotlight)
 
+[![NeurIPS 2026 Spotlight](https://img.shields.io/badge/NeurIPS%202026-Spotlight%20%F0%9F%8F%86-gold)](https://kohsukeide.github.io/projects/what-scores-miss/)
 [![Project Page](https://img.shields.io/badge/Project-Page-orange)](https://kohsukeide.github.io/projects/what-scores-miss/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
@@ -11,7 +12,7 @@ Hirokatsu Kataoka<sup>1,5</sup> · Yuki M. Asano<sup>3</sup> · Yutaka Satoh<sup
 <sup>1</sup>AIST &nbsp; <sup>2</sup>University of Tsukuba &nbsp; <sup>3</sup>Fundamental AI Lab, University of Technology Nuremberg<br>
 <sup>4</sup>CADDi &nbsp; <sup>5</sup>Visual Geometry Group, University of Oxford
 
-**NeurIPS 2026 Evaluations & Datasets Track · Spotlight**
+🏆 **NeurIPS 2026 Spotlight** · Evaluations & Datasets Track
 
 <img src="assets/teaser.png" alt="Three diagnostics for interpreting point-cloud self-supervised learning scores" width="100%">
 
